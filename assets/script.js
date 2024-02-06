@@ -46,6 +46,8 @@ for (let i = 0; i < slides.length; i++) {
   console.log(bullet);
 }
 
+// Image et text du carousel
+
 function ChangeSlide(sens) {
   numero = numero + sens;
   if (numero > slides.length - 1) numero = 0;
