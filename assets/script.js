@@ -27,10 +27,12 @@ console.log(slides);
 // Affichage des fléches
 
 document.querySelector(".arrow_right").addEventListener("click", () => {
+  ChangeSlide(+1);
   console.log("fléche droite");
 });
 
 document.querySelector(".arrow_left").addEventListener("click", () => {
+  ChangeSlide(-1);
   console.log("fléche gauche");
 });
 
@@ -42,7 +44,7 @@ for (let i = 0; i < slides.length; i++) {
   const bullet = document.createElement("span");
   dotsDiv.appendChild(bullet);
   bullet.classList.add("dot");
-  bullet.classList.add("dot_selected");
+  //   bullet.classList.add("dot_selected");
   console.log(bullet);
 }
 
@@ -50,8 +52,18 @@ for (let i = 0; i < slides.length; i++) {
 
 function ChangeSlide(sens) {
   numero = numero + sens;
-  if (numero > slides.length - 1) numero = 0;
-  if (numero < 0) numero = slides.length - 1;
+
+  if (numero > slides.length - 1) {
+    numero = 0;
+  }
+  if (numero < 0) {
+    numero = slides.length - 1;
+  }
+
+  const dots = document.getElementsByClassName("dot");
+  dots[numero].classList.add("dot_selected");
+  console.log(dots);
+
   document.querySelector(".banner-img").src =
     "./assets/images/slideshow/" + slides[numero]["image"];
   document.getElementById("text").innerHTML = slides[numero]["tagLine"];
