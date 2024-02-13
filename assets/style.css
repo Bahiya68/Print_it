@@ -132,6 +132,13 @@ header {
 #banner .arrow_right {
 	right: 10px;
 }
+
+.arrow_left:hover,
+.arrow_right:hover {
+    cursor: pointer;
+}
+
+
 /* Gestion des points du carrousel */
 .dots {
 	position: absolute;
@@ -147,6 +154,8 @@ header {
 	border-radius: 100%;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
 }
+
+
 .dot_selected {
 	background-color: #fff;
 }
