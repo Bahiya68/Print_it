@@ -20,64 +20,60 @@ const slides = [
   },
 ];
 
-// initialisation de la variable
+// initialisation de la variable numero du slide
 let numero = 0;
 
 console.log(slides);
 
-// Action Click sur les fléches droite et gauche
+// Etape 1 Ajout d'écouteur d'évènements sur le Click sur des fléches droite et gauche
 
 document.querySelector(".arrow_right").addEventListener("click", () => {
   ChangeSlide(+1);
-  console.log("fléche droite");
+  console.log("J'ai cliqué sur fléche droite");
 });
 
 document.querySelector(".arrow_left").addEventListener("click", () => {
   ChangeSlide(-1);
-  console.log("fléche gauche");
+  console.log("J'ai cliqué sur fléche gauche");
 });
 
-const dotsDiv = document.querySelector(".dots"); // Affichage du bullets
+// On défini et on fait appel à la classes "dots"
+const dotsDiv = document.querySelector(".dots");
 
+// Affichage des bullets
 for (let i = 0; i < slides.length; i++) {
-  const bullet = document.createElement("span");
-  dotsDiv.appendChild(bullet);
-  bullet.classList.add("dot"); // affiche les bullet inactif (vide)
+  const bullet = document.createElement("span"); // création de l'élément "span" qui vont contenir les bullets
+  bullet.classList.add("dot"); // on ajoute la classe "dot" dans les "span" crée
+  dotsDiv.appendChild(bullet); // on insére "bullet" à la classe parent "dotsDiv"
 
   if (i === 0) {
     bullet.classList.add("dot_selected");
   }
-
   console.log(bullet);
 }
 
-// Image et text du carousel
-
+// Fonction pour faire défiler les Images du carousel
+// fonction qui gére les bullets
 function ChangeSlide(sens) {
-  const dots = document.getElementsByClassName("dot");
-  dots[numero].classList.remove("dot_selected");
+  const dots = document.getElementsByClassName("dot"); // On apelle la classe "dot"
+  dots[numero].classList.remove("dot_selected"); //supprime le bullet de la 1ere slide lorsqu'elle n'est plus active
 
-  numero = numero + sens;
+  numero = numero + sens; //nouvelle valeur de la variable numero (on lui affecte le parametre "sens")
 
   if (numero > slides.length - 1) {
     numero = 0;
-  }
+  } // si n > au nbre de slides ds le tbleau alors on reviens à la premiere slide
   if (numero < 0) {
     numero = slides.length - 1;
-  }
+  } // si n < à la 1ere slide alors on reviens à la derniere slide
 
-  // affiche les bulles selectionné
-
-  dots[numero].classList.add("dot_selected"); // affichage des bullet actif
+  dots[numero].classList.add("dot_selected"); // affichage des bullet actif sur le slide actif
   console.log(dots);
 
-  // pour récupérer les Images et texts
-
+  // pour récupérer les Images
   document.querySelector(".banner-img").src =
     "./assets/images/slideshow/" + slides[numero]["image"];
-  document.getElementById("text").innerHTML = slides[numero]["tagLine"];
 
-  {
-    console.log(sens);
-  }
+  // pour récupérer les textes
+  document.getElementById("text").innerHTML = slides[numero]["tagLine"];
 }
