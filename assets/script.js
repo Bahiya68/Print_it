@@ -23,8 +23,6 @@ const slides = [
 // initialisation de la variable numero du slide
 let numero = 0;
 
-console.log(slides);
-
 // Etape 1 Ajout d'écouteur d'évènements sur le Click sur des fléches droite et gauche
 
 document.querySelector(".arrow_right").addEventListener("click", () => {
@@ -49,7 +47,6 @@ for (let i = 0; i < slides.length; i++) {
   if (i === 0) {
     bullet.classList.add("dot_selected");
   }
-  console.log(bullet);
 }
 
 // Fonction pour faire défiler les Images du carousel
@@ -68,7 +65,6 @@ function ChangeSlide(sens) {
   } // si n < à la 1ere slide alors on reviens à la derniere slide
 
   dots[numero].classList.add("dot_selected"); // affichage des bullet actif sur le slide actif
-  console.log(dots);
 
   // pour récupérer les Images
   document.querySelector(".banner-img").src =
